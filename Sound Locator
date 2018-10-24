@@ -1,0 +1,106 @@
+
+#include <Servo.h>
+
+Servo myservo1;
+Servo myservo2;
+Servo myservo3;
+Servo myservo4;
+
+
+int a;
+int b;
+int c;
+int d;
+
+
+
+
+ 
+uint16_t threshold = 0;
+
+uint8_t numberOfReadings = 100;
+
+
+int ServoPin1 = 9;
+int ServoPin2 = 10;
+int ServoPin3 = 11;
+int ServoPin4 = 12;
+
+
+int SoundInPin = A0;
+int SoundInPin1 = A1;
+int SoundInPin2 = A2;
+int SoundInPin3 = A3;
+
+int sum = 0;
+
+void setup() {
+  
+ myservo1.attach(ServoPin1);
+ myservo2.attach(ServoPin2);
+ myservo3.attach(ServoPin3);
+  myservo4.attach(ServoPin4);
+
+     pinMode(SoundInPin, INPUT);
+     pinMode(SoundInPin1, INPUT);
+     pinMode(SoundInPin2, INPUT);
+     pinMode(SoundInPin3, INPUT);
+     
+     
+
+         
+  for (int i = 0; i < numberOfReadings; ++i)
+  {
+    threshold += analogRead(A0);
+  }
+  threshold /= numberOfReadings;
+}
+
+void loop() {
+a = analogRead(A0);
+b = analogRead(A1);
+c = analogRead(A2);
+d = analogRead(A3);
+sum = (a+b+c+d);
+if (sum)>threshold{
+
+if (a>b){
+  if(a>c){
+    if(c>b){
+      digitalWrite(9, HIGH)}
+    
+     else if (b>c){
+      digitalWrite(9, HIGH)}
+   
+   else if (c>a){
+     if (d>a){
+    digitalWrite(10, HIGH)}
+
+      else if (a>d){
+        digitalWrite(10, HIGH)}
+        }
+     
+         }
+}
+    else if (b>a){
+      if (a>c){
+        if (a>d){
+          digitalWrite(12, HIGH)}
+          else if (d>a){
+            digitalWrite(12, HIGH)}
+            }
+            else if (c>a){
+              if (b>d){
+                digitalWrite(13, HIGH)}
+                else if (d>b){
+                  digitalWrite(13, HIGH)}
+              
+              }
+
+ 
+    }
+
+      
+}
+
+}
